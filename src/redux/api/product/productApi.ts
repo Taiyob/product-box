@@ -13,18 +13,21 @@ const productApi = baseApi.injectEndpoints({
         params: { limit, skip },
       }),
     }),
+
     getProductById: builder.query<Product, number>({
       query: (id) => ({
         url: `/products/${id}`,
         method: "GET",
       }),
     }),
+
     getProductCategories: builder.query<CategoryList, void>({
       query: () => ({
         url: `/products/categories`,
         method: "GET",
       }),
     }),
+
     updateProduct: builder.mutation<
       Partial<Product>,
       { id: number; body: Partial<Product> }

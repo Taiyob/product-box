@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EyeOutlined } from "@ant-design/icons";
 import { Product } from "../types/product";
+import { motion } from "framer-motion";
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -115,43 +116,70 @@ const ProductPage = () => {
       }}
     >
       <Content style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <Card
-          variant="outlined"
-          style={{
-            borderRadius: 16,
-            padding: 24,
-            boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <Title level={2} style={{ textAlign: "center", marginBottom: 32 }}>
-            🛍️ Product List
-          </Title>
-
-          <Table
-            columns={columns}
-            dataSource={data?.products.map((product: Product) => ({
-              ...product,
-              key: product.id,
-            }))}
-            pagination={false}
-            bordered
-            scroll={{ x: "max-content" }}
+          <Card
+            variant="outlined"
             style={{
-              background: "#fff",
-              borderRadius: 12,
+              borderRadius: 16,
+              padding: 24,
+              boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
             }}
-          />
+          >
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <Title
+                level={2}
+                style={{ textAlign: "center", marginBottom: 32 }}
+              >
+                🛍️ Product List
+              </Title>
+            </motion.div>
 
-          <Flex justify="center" style={{ marginTop: 24 }}>
-            <Pagination
-              current={page}
-              pageSize={pageSize}
-              total={data?.total || 0}
-              onChange={handleChangePage}
-              showSizeChanger={false}
-            />
-          </Flex>
-        </Card>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+            >
+              <Table
+                columns={columns}
+                dataSource={data?.products.map((product: Product) => ({
+                  ...product,
+                  key: product.id,
+                }))}
+                pagination={false}
+                bordered
+                scroll={{ x: "max-content" }}
+                style={{
+                  background: "#fff",
+                  borderRadius: 12,
+                }}
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
+            >
+              <Flex justify="center" style={{ marginTop: 24 }}>
+                <Pagination
+                  current={page}
+                  pageSize={pageSize}
+                  total={data?.total || 0}
+                  onChange={handleChangePage}
+                  showSizeChanger={false}
+                />
+              </Flex>
+            </motion.div>
+          </Card>
+        </motion.div>
       </Content>
     </Layout>
   );
