@@ -7,11 +7,7 @@ const productApi = baseApi.injectEndpoints({
       ProductResponse,
       { limit: number; skip: number }
     >({
-      query: ({ limit, skip }) => ({
-        url: `/products`,
-        method: "GET",
-        params: { limit, skip },
-      }),
+      query: ({ limit, skip }) => `/products?limit=${limit}&skip=${skip}`,
     }),
 
     getProductById: builder.query<Product, number>({

@@ -14,12 +14,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EyeOutlined } from "@ant-design/icons";
 import { Product } from "../types/product";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const { Content } = Layout;
 const { Title } = Typography;
 
-// Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -43,7 +42,7 @@ const cardHover = {
 const ProductPage = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
-  const [pageSize] = useState(10);
+  const [pageSize] = useState(5);
 
   const { data, isLoading, isError } = useGetAllProductsQuery({
     limit: pageSize,
@@ -159,26 +158,31 @@ const ProductPage = () => {
                 🛍️ Product List
               </Title>
 
-              <motion.div
-                variants={fadeInUp}
-                initial="hidden"
-                animate="visible"
-              >
-                <Table
-                  columns={columns}
-                  dataSource={data?.products.map((product: Product) => ({
-                    ...product,
-                    key: product.id,
-                  }))}
-                  pagination={false}
-                  bordered
-                  scroll={{ x: "max-content" }}
-                  style={{
-                    background: "#fff",
-                    borderRadius: 12,
-                  }}
-                />
-              </motion.div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={page}
+                  variants={fadeInUp}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  style={{ minHeight: 400 }}
+                >
+                  <Table
+                    columns={columns}
+                    dataSource={data?.products.map((product: Product) => ({
+                      ...product,
+                      key: product.id,
+                    }))}
+                    pagination={false}
+                    bordered
+                    scroll={{ x: "max-content" }}
+                    style={{
+                      background: "#fff",
+                      borderRadius: 12,
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
 
               <motion.div
                 variants={fadeInUp}

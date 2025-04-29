@@ -74,11 +74,18 @@ const ProductDetailPage = () => {
   if (isError || !product) return <div>Something went wrong!</div>;
 
   return (
-    <Layout
-      style={{ padding: "20px", background: "#f0f2f5", minHeight: "100vh" }}
-    >
+    <Layout style={{ background: "#f0f2f5", minHeight: "100vh" }}>
       <Content
-        style={{ background: "#fff", padding: "24px", borderRadius: "8px" }}
+        style={{
+          margin: "20px",
+          background: "#fff",
+          borderRadius: "8px",
+          padding: "24px",
+          display: "flex",
+          flexDirection: "column",
+          height: "calc(100vh - 40px)",
+          overflow: "hidden",
+        }}
       >
         <Space style={{ marginBottom: "20px" }}>
           <Button onClick={() => navigate("/products")}>
@@ -92,7 +99,12 @@ const ProductDetailPage = () => {
           </Title>
         </motion.div>
 
-        <motion.div variants={zoomIn} initial="hidden" animate="visible">
+        <motion.div
+          variants={zoomIn}
+          initial="hidden"
+          animate="visible"
+          style={{ flex: 1, overflowY: "auto", paddingRight: "8px" }}
+        >
           <Card
             cover={
               <motion.div variants={zoomIn}>
@@ -106,7 +118,6 @@ const ProductDetailPage = () => {
             variant="outlined"
             style={{ width: "100%", marginBottom: "20px" }}
           >
-            {/* Product Info */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -152,7 +163,6 @@ const ProductDetailPage = () => {
 
             <Divider />
 
-            {/* Meta */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -182,7 +192,6 @@ const ProductDetailPage = () => {
 
             <Divider />
 
-            {/* Dimensions */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -209,7 +218,6 @@ const ProductDetailPage = () => {
 
             <Divider />
 
-            {/* Description */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -222,7 +230,6 @@ const ProductDetailPage = () => {
 
             <Divider />
 
-            {/* Tags */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -241,7 +248,6 @@ const ProductDetailPage = () => {
 
             <Divider />
 
-            {/* Reviews */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -276,7 +282,6 @@ const ProductDetailPage = () => {
 
             <Divider />
 
-            {/* Edit Button */}
             <motion.div
               style={{ textAlign: "center", marginTop: 24 }}
               variants={fadeUp}
