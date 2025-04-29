@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { EyeOutlined } from "@ant-design/icons";
 import { Product } from "../types/product";
 import { motion, AnimatePresence } from "framer-motion";
+import { PiShoppingBagFill } from "react-icons/pi";
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -154,8 +155,9 @@ const ProductPage = () => {
               <Title
                 level={2}
                 style={{ textAlign: "center", marginBottom: 32 }}
+                className="flex justify-center items-center gap-2"
               >
-                🛍️ Product List
+                <PiShoppingBagFill /> Product List
               </Title>
 
               <AnimatePresence mode="wait">
