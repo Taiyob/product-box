@@ -21,7 +21,7 @@ const productApi = baseApi.injectEndpoints({
       }),
     }),
 
-    getProductCategories: builder.query<CategoryList, void>({
+    getProductCategories: builder.query<CategoryList[], void>({
       query: () => ({
         url: `/products/categories`,
         method: "GET",

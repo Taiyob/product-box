@@ -49,7 +49,11 @@ export interface ProductResponse {
   limit: number;
 }
 
-export type CategoryList = string[];
+export type CategoryList = {
+  slug: string;
+  name: string;
+  url?: string;
+};
 
 export interface ProductFormValues {
   title: string;
