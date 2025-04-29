@@ -10,7 +10,9 @@ import {
   Space,
   Typography,
   message,
+  Spin,
 } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetProductByIdQuery,
@@ -18,8 +20,6 @@ import {
   useUpdateProductMutation,
 } from "../redux/api/product/productApi";
 import { CategoryList, Product } from "../types/product";
-import { LoadingOutlined } from "@ant-design/icons";
-import { Spin } from "antd";
 import { motion } from "framer-motion";
 
 const { Title } = Typography;
@@ -67,7 +67,7 @@ const EditProductPage = () => {
     return (
       <div
         style={{
-          minHeight: "80vh",
+          height: "100vh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -79,11 +79,13 @@ const EditProductPage = () => {
   }
 
   return (
-    <motion.div
-      variants={fadeIn}
-      initial="hidden"
-      animate="visible"
-      style={{ margin: 24 }}
+    <div
+      style={{
+        height: "100vh",
+        overflow: "hidden",
+        backgroundColor: "#f0f2f5",
+        padding: 24,
+      }}
     >
       <Card
         title={
@@ -91,6 +93,13 @@ const EditProductPage = () => {
             <Title level={3}>Edit Product: {product.title}</Title>
           </motion.div>
         }
+        style={{
+          height: "100%",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+        }}
+        bodyStyle={{ flex: 1, overflowY: "auto", paddingRight: 16 }}
       >
         <Form
           form={form}
@@ -280,7 +289,7 @@ const EditProductPage = () => {
           </Form.Item>
         </Form>
       </Card>
-    </motion.div>
+    </div>
   );
 };
 
