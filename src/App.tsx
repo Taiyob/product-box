@@ -131,7 +131,7 @@ function App() {
                     style={{ marginTop: 20 }}
                     onClick={() => navigate("/products")}
                   >
-                    🛍 View Products
+                    View Products
                   </Button>
                 </motion.div>
               </>
@@ -141,8 +141,8 @@ function App() {
       </Content>
 
       <Footer style={{ textAlign: "center", background: "#f0f2f5" }}>
-        © {new Date().getFullYear()} My E-Commerce Store. Built with ❤️ and Ant
-        Design.
+        © {new Date().getFullYear()} My E-Product Box. Built with creativity and
+        Ant Design.
       </Footer>
     </Layout>
   );
