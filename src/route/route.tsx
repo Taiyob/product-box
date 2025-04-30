@@ -3,7 +3,6 @@ import App from "../App";
 import ProductPage from "../pages/ProductPage";
 import ProductDetailPage from "../pages/ProductDetailPage";
 import EditProductPage from "../pages/EditProductPage";
-import LoginPage from "../pages/LoginPage";
 
 const route = createBrowserRouter([
   {
@@ -21,10 +20,6 @@ const route = createBrowserRouter([
   {
     path: "/products/:id/edit",
     element: <EditProductPage />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
   },
 ]);
 
